@@ -2,10 +2,10 @@ name: deploy dockerfile using github
 
 on:
     push:
-      branch: [ main ]
+      branches: [ main ]
 jobs:
    compose-up:
-     runs-on: ubuntu-lates
+     runs-on: ubuntu-latest
 
      steps:
        - name: checkout code
