@@ -19,6 +19,7 @@ jobs:
             script: |
               echo "✅ SSH connection successful!"
               hostname
+              uptime
       - name: copy files and run docker compose on server
         uses: appleboy/ssh-action@v0.1.7
         with:
