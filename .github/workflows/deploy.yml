@@ -20,4 +20,10 @@ jobs:
             cd /sourabh/todo
             git pull origin main
             docker compose down
-            docker compose up -d --build    
+            docker compose up -d --build
+            echo "⏳ Waiting for app to become reachable on port 3000..."
+            for i in {1..20}; do
+              nc -z localhost 3000 && echo "✅ App is up!" && break
+              echo "⏱️ Waiting... ($i)"
+              sleep 5
+            done
