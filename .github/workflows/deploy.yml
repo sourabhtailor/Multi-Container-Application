@@ -1,0 +1,21 @@
+name: deploy dockerfile using github
+
+on:
+    push:
+      branch: [ main ]
+jobs:
+   compose-up:
+     runs-on: ubuntu-lates
+
+     steps:
+       - name: checkout code
+         uses: actions/checkout@3
+       - name: set up docker compose
+         run: |
+             docker compose --version
+
+       - name:  build and run container
+         run: |
+            docker compose up -d --build
+            sleep 10
+            docker compose ps     
