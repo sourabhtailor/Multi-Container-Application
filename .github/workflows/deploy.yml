@@ -19,4 +19,5 @@ jobs:
           script: |
             cd /sourabh/todo
             git pull origin main
+            docker compose down
             docker compose up -d --build    
