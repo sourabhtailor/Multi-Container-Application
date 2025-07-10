@@ -1,21 +1,22 @@
-name: deploy dockerfile using github
+name: Deploy to server via docker compose
 
 on:
-    push:
-      branches: [ main ]
+  push:
+    branches: [ main ]
+
 jobs:
-   compose-up:
-     runs-on: ubuntu-latest
-
-     steps:
-       - name: checkout code
-         uses: actions/checkout@v3
-       - name: set up docker compose
-         run: |
-             docker compose --version
-
-       - name:  build and run container
-         run: |
-            docker compose up -d --build
-            sleep 10
-            docker compose ps     
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: copy files and run docker compose on server
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /sourabh/todo
+            git pull origin main
+            docker compose up -d --build    
