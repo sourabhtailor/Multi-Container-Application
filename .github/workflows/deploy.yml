@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v3
+        
       - name: Test SSH connection
         uses: appleboy/ssh-action@v0.1.7
         with:
@@ -20,6 +21,7 @@ jobs:
               echo "✅ SSH connection successful!"
               hostname
               uptime
+              
       - name: copy files and run docker compose on server
         uses: appleboy/ssh-action@v0.1.7
         with:
