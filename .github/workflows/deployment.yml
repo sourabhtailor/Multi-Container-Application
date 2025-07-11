@@ -22,27 +22,7 @@ jobs:
 
             echo "📦 Navigating to app directory..."
             cd /sourabh/todo
-
-            echo "🔄 Pulling latest code..."
             git pull origin main
-
-            echo "🧹 Stopping current containers..."
-            docker compose down
-
-            echo "🚀 Building and starting containers..."
+            docker composer up
             docker compose up -d --build
-
-            echo "⏳ Waiting for app to be live on port 3000..."
-
-            for i in {1..10}; do
-              if curl -s http://localhost:3000 > /dev/null; then
-                echo "✅ App is live!"
-                break
-              else
-                echo "⏳ Attempt $i: app not ready yet..."
-                sleep 5
-              fi
-            done
-
-            echo "🎉 Deployment finished successfully!"
 
