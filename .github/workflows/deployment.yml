@@ -23,6 +23,6 @@ jobs:
             echo "📦 Navigating to app directory..."
             cd /sourabh/todo
             git pull origin main
-            docker composer up
+            docker compose down
             docker compose up -d --build
 
