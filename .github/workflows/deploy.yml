@@ -8,18 +8,17 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: copy files and run docker compose on server
+      - name: Copy files and run Docker Compose on server
         uses: appleboy/ssh-action@v0.1.7
         with:
-
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            set -e
+            set -e  # Stop execution if any command fails
             cd /sourabh/todo
             git pull origin main
             docker compose down
