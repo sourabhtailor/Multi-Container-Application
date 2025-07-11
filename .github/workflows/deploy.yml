@@ -9,6 +9,9 @@ jobs:
     steps:
       - name: SSH only
         uses: appleboy/ssh-action@v0.1.7
+        env:
+          DISABLE_PORT_CHECK: true
+          PORT: 22
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
