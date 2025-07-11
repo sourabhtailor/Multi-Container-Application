@@ -21,5 +21,4 @@ jobs:
             set -e  # Stop execution if any command fails
             cd /sourabh/todo
             git pull origin main
-            docker compose down
             docker compose up -d --build
