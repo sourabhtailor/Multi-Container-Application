@@ -18,8 +18,6 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
-            set -e
-
             echo "📦 Navigating to app directory..."
             cd /sourabh/todo
             git pull origin main
