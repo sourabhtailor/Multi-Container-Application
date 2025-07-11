@@ -18,6 +18,5 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            curl http://101.53.150.196:3000
             ls
             uptime
