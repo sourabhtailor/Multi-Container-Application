@@ -16,7 +16,9 @@ jobs:
           port: 22  # Change if you use a non-standard SSH port
           script: |
             echo "✅ SSH connection successful!"
-            hostname
-            whoami
-            uptime
+            cd /sourabh/todo
+            git pull origin main
+            docker compose down
+            docker compose up -d
+            docker compose ps
 
