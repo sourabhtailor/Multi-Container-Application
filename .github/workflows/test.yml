@@ -1,0 +1,22 @@
+name: Test SSH Connection
+
+on:
+  workflow_dispatch:  # Allows manual trigger from GitHub UI
+
+jobs:
+  test-ssh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test SSH connection to remote server
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: 22  # Change if you use a non-standard SSH port
+          script: |
+            echo "✅ SSH connection successful!"
+            hostname
+            whoami
+            uptime
+
