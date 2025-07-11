@@ -22,3 +22,4 @@ jobs:
             cd /sourabh/todo
             git pull origin main
             docker compose up -d --build
+            uptime
